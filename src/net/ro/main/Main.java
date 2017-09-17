@@ -4,7 +4,7 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		Main_profit pro = new Main_profit();
+		Main_base pro = new Main_base();
 		pro.init_ventana();
 		
 		System.out.println("Iniciando...");
