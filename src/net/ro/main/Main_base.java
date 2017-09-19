@@ -24,9 +24,18 @@ public class Main_base
 	public JButton mul;
 	public JButton div;
 	
+	CambioModo c;
+	
+	JButton[] botones = new JButton[4];
+	public int modo = 0;
+	
+	JButton calcular;
+	
 	public JTextField num_dos;
 	
-	JLabel debug;
+	public JTextField num_out;
+	
+	private JLabel debug;
 	
 	private final Dimension dim = new Dimension(50, 50);
 	
@@ -67,14 +76,14 @@ public class Main_base
         
         // Primer numero
         
-        num_uno = new JTextField();
+        num_uno = new JTextField("1");
         
         num_uno.setLocation(10, 180);
         num_uno.setSize(250, 25);
         
         // Segundo numero
         
-        num_dos = new JTextField();
+        num_dos = new JTextField("1");
 
         num_dos.setLocation(505, 180);
         num_dos.setSize(250, 25);
@@ -85,23 +94,54 @@ public class Main_base
         
         sum.setLocation(275, 180);
         sum.setSize(dim);
-        
-        sum.setEnabled(false);
+        sum.setName("0");
         
         res = new JButton("-");
         
         res.setLocation(330, 180);
         res.setSize(dim);
+        res.setName("1");
         
         mul = new JButton("*");
         
         mul.setLocation(385, 180);
         mul.setSize(dim);
-
+        mul.setName("2");
+        
         div = new JButton("/");
         
         div.setLocation(440, 180);
         div.setSize(dim);
+        div.setName("3");
+
+        botones[0] = sum;
+        botones[1] = res;
+        botones[2] = mul;
+        botones[3] = div;
+        
+        // Acabar con los botones
+        
+        c = new CambioModo(this);
+        
+        for (int i = 0; i < botones.length; i++)
+    	{
+    		botones[i].addActionListener(c);
+    	}
+        
+        // Botón calcular
+        
+        calcular = new JButton("Calcular");
+        
+        calcular.setLocation(780, 180);
+        calcular.setSize(100, 50);
+        
+        // Resultado de la cuenta
+        
+        num_out = new JTextField("2");
+        
+        num_out.setLocation(10, 250);
+        num_out.setSize(555, 25);
+        num_out.setEnabled(false);
         
         // Debug para que se puedan ver bien los JTextFields
         
@@ -121,8 +161,25 @@ public class Main_base
         ventana.add(mul);
         ventana.add(div);
         
+        ventana.add(calcular);
+        
+        ventana.add(num_out);
+        
         ventana.add(debug);
         
+        desactivar(modo);
+        
         ventana.setVisible(true);
+    }
+    
+    public void desactivar(int _s)
+    {
+    	for (int i = 0; i < botones.length; i++)
+    	{
+    		botones[i].setEnabled(true);
+    	}
+    	botones[_s].setEnabled(false);
+    	
+    	modo = _s;
     }
 }
