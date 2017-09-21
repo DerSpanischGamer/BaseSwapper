@@ -9,15 +9,15 @@ import javax.swing.JTextField;
 
 public class Main_base
 {
-	JFrame ventana;
+	private JFrame ventana;
 	
-	JLabel txt;
+	private JLabel txt;
 	public JTextField input;
 	
-	JLabel txt_;
+	private JLabel txt_;
 	public JTextField input_;
 	
-	JLabel txt_uno;
+	private JLabel txt_uno;
 	public JTextField num_uno;
 	
 	public JButton sum;
@@ -25,21 +25,29 @@ public class Main_base
 	public JButton mul;
 	public JButton div;
 	
-	CambioModo c;
+	private CambioModo c;
 	
-	JButton[] botones = new JButton[4];
+	private JButton[] botones = new JButton[4];
 	public int modo = 0;
 	
-	JButton calcular;
+	private JButton calcular;
 	
-	JLabel txt_dos;
+	private JLabel txt_dos;
 	public JTextField num_dos;
 	
 	public JTextField num_out;
 	
-	JLabel txt_cam;
+	private MandarDatos m;
+	
+	private JLabel txt_cam;
 	public JTextField cambio;
-	JButton cambio_btn;
+	private JButton cambio_btn;
+	
+	private JLabel txt_out;
+	private JTextField cambio_out;
+	private int base = 10;
+	
+	private JLabel ro;
 	
 	private JLabel debug;
 	
@@ -147,10 +155,16 @@ public class Main_base
         
         // Botón calcular
         
+        m = new MandarDatos(this);
+        
         calcular = new JButton("Calcular");
         
         calcular.setLocation(780, 180);
         calcular.setSize(100, 50);
+        
+        calcular.setName("0");
+        
+        calcular.addActionListener(m);
         
         // Resultado de la cuenta
         
@@ -172,10 +186,35 @@ public class Main_base
         cambio.setLocation(10, 350);
         cambio.setSize(290, 25);
         
-        cambio_btn = new JButton("Cambiar base dle numero introducido:");
+        cambio_btn = new JButton("Cambiar base del numero introducido");
         
         cambio_btn.setLocation(310, 325);
         cambio_btn.setSize(250, 50);
+
+        cambio_btn.setName("1");
+        
+        cambio_btn.addActionListener(m);
+        
+        // Salida entre cambio de bases
+        
+        txt_out = new JLabel("Tu número en base " + base + " es:");
+        
+        txt_out.setLocation(570, 325);
+        txt_out.setSize(300, 25);
+        
+        cambio_out = new JTextField("0");
+        
+        cambio_out.setLocation(570, 350);
+        cambio_out.setSize(300, 25);
+        
+        cambio_out.setEnabled(false);
+        
+        // RO ;P
+        
+        ro = new JLabel("RO ;P - 2017");
+        
+        ro.setLocation(1200, 670);
+        ro.setSize(80, 25);
         
         // Debug para que se puedan ver bien los JTextFields
         
@@ -206,6 +245,11 @@ public class Main_base
         ventana.add(cambio);
         ventana.add(cambio_btn);
         
+        ventana.add(txt_out);
+        ventana.add(cambio_out);
+        
+        ventana.add(ro);
+        
         ventana.add(debug);
         
         desactivar(modo);
@@ -222,5 +266,12 @@ public class Main_base
     	botones[_s].setEnabled(false);
     	
     	modo = _s;
+    }
+    
+    public void cambiarBase(int _b)
+    {
+    	base = _b;
+    	
+    	txt_out.setText("Tu número en base " + base + " es:");
     }
 }
