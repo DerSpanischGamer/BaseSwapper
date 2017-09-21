@@ -17,6 +17,7 @@ public class Main_base
 	JLabel txt_;
 	public JTextField input_;
 	
+	JLabel txt_uno;
 	public JTextField num_uno;
 	
 	public JButton sum;
@@ -31,13 +32,20 @@ public class Main_base
 	
 	JButton calcular;
 	
+	JLabel txt_dos;
 	public JTextField num_dos;
 	
 	public JTextField num_out;
 	
+	JLabel txt_cam;
+	public JTextField cambio;
+	JButton cambio_btn;
+	
 	private JLabel debug;
 	
 	private final Dimension dim = new Dimension(50, 50);
+	
+	// TODO añadir JLabels y más inputs y outputs
 	
     void init_ventana()
     {
@@ -50,7 +58,7 @@ public class Main_base
         
         // Base de entrada
         
-        txt = new JLabel("Introducide los caracteres que utiliza tu base:");
+        txt = new JLabel("Introduce los caracteres que utiliza tu base:");
         
         txt.setLocation(10, 10);
         txt.setSize(500, 25);
@@ -62,7 +70,7 @@ public class Main_base
         
         // Base de salida
         
-        txt_ = new JLabel("Introducide los caracteres que utiliza la otra base:");
+        txt_ = new JLabel("Introduce los caracteres que utiliza la otra base:");
         
         txt_.setLocation(10, 100);
         txt_.setSize(500, 25);
@@ -74,20 +82,29 @@ public class Main_base
         
         input_.setEnabled(false);
         
-        // Primer numero
+        // Primer numero y su texto
         
         num_uno = new JTextField("1");
         
-        num_uno.setLocation(10, 180);
+        num_uno.setLocation(10, 205);
         num_uno.setSize(250, 25);
         
-        // Segundo numero
+        txt_uno = new JLabel("Introduce el primer número:");
+        
+        txt_uno.setLocation(10, 180);
+        txt_uno.setSize(250, 25);
+        
+        // Segundo numero y su texto
         
         num_dos = new JTextField("1");
 
-        num_dos.setLocation(505, 180);
+        num_dos.setLocation(505, 205);
         num_dos.setSize(250, 25);
+
+        txt_dos = new JLabel("Introduce el segundo número:");
         
+        txt_dos.setLocation(505, 180);
+        txt_dos.setSize(250, 25);
         // Botones
         
         sum = new JButton("+");
@@ -143,6 +160,23 @@ public class Main_base
         num_out.setSize(555, 25);
         num_out.setEnabled(false);
         
+        // Cambio de numeros entre bases
+        
+        txt_cam = new JLabel("Introduce un numero que quieras cambiar de base:");
+        
+        txt_cam.setLocation(10, 325);
+        txt_cam.setSize(300, 25);
+        
+        cambio = new JTextField("0");
+        
+        cambio.setLocation(10, 350);
+        cambio.setSize(290, 25);
+        
+        cambio_btn = new JButton("Cambiar base dle numero introducido:");
+        
+        cambio_btn.setLocation(310, 325);
+        cambio_btn.setSize(250, 50);
+        
         // Debug para que se puedan ver bien los JTextFields
         
         debug = new JLabel();
@@ -155,6 +189,9 @@ public class Main_base
         
         ventana.add(num_uno);
         ventana.add(num_dos);
+        
+        ventana.add(txt_uno);
+        ventana.add(txt_dos);
 
         ventana.add(sum);
         ventana.add(res);
@@ -164,6 +201,10 @@ public class Main_base
         ventana.add(calcular);
         
         ventana.add(num_out);
+        
+        ventana.add(txt_cam);
+        ventana.add(cambio);
+        ventana.add(cambio_btn);
         
         ventana.add(debug);
         
