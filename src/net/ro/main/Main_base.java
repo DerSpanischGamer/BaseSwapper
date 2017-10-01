@@ -71,7 +71,7 @@ public class Main_base
         txt.setLocation(10, 10);
         txt.setSize(500, 25);
         
-        input = new JTextField("0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F");
+        input = new JTextField("0,1,2,3,4,5,6,7,8,9,A,B");
         
         input.setLocation(10, 50);
         input.setSize(500, 25);

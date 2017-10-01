@@ -3,11 +3,18 @@ package net.ro.main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import net.ro.cambioBase.BaseManager;
+
 public class MandarDatos implements ActionListener
 {
 	Main_base base;
+	BaseManager b;
 	
-	MandarDatos(Main_base _b) { base = _b; }
+	MandarDatos(Main_base _b)
+	{
+		base = _b;
+		b = new BaseManager(base);
+	}
 	
 	public void actionPerformed(ActionEvent arg0)
 	{
@@ -26,7 +33,7 @@ public class MandarDatos implements ActionListener
 			
 			System.out.println("1");
 			
-			
+			b.act();
 		}
 	}
 }
