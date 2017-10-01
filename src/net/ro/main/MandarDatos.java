@@ -25,6 +25,8 @@ public class MandarDatos implements ActionListener
 			// TODO ejecutar el codigo para cambiar el numero de base en base
 			
 			System.out.println("1");
+			
+			
 		}
 	}
 }
