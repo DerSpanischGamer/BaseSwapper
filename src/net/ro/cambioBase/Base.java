@@ -20,14 +20,31 @@ public class Base
 		
 		for (int i = 0; i < _b.length(); i++)
 		{
-			temp[pos] = "";
+			if (temp[pos] == null) temp[pos] = "";
 			
 			if (_b.substring(i, i + 1).equals(",")) pos++; else temp[pos] += _b.substring(i, i + 1);
 		}
 		
-		for(int i = 0; i < temp.length; i++)
+		return temp;
+	}
+	
+	public int cambioBase(String in, int out, int num)
+	{
+		int temp = 0;
+		
+		String _num = Integer.toString(num);
+		int[] temp_ = new int[_num.length()];
+		
+		// TODO hacer el cambio del valor que tiene una cifra en una base a la base decimal, hoy me da pereza :3
+		
+		for (int i = temp_.length - 1; i > 0; i--)
 		{
-			System.out.println(temp[i]);
+			temp_[i] = Integer.parseInt(_num.substring(temp_.length - i, temp_.length - i + 1));
+		}
+		
+		for (int i = 0; i < temp_.length; i++)
+		{
+			temp += temp_[i] * in^i;
 		}
 		
 		return temp;

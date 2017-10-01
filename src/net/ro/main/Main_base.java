@@ -44,7 +44,7 @@ public class Main_base
 	private JButton cambio_btn;
 	
 	private JLabel txt_out;
-	private JTextField cambio_out;
+	public JTextField cambio_out;
 	private int base = 10;
 	
 	private JLabel ro;

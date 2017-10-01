@@ -22,6 +22,6 @@ public class BaseManager
 		prim = b.hacerBase(ba.input.getText(), b.cogerBase(ba.input.getText()));
 		sec = b.hacerBase(ba.input_.getText(), b.cogerBase(ba.input_.getText()));
 		
-		System.out.println(prim.length + " " + prim[10]);
+		ba.cambio_out.setText(Integer.toString(b.cambioBase(prim.length, sec.length, Integer.parseInt(ba.cambio.getText()))));
 	}
 }
