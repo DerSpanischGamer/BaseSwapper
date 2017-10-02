@@ -25,13 +25,13 @@ public class MandarDatos implements ActionListener
 		{
 			// TODO ejecutar el codigo para hacer las cuentas
 			
-			System.out.println("0");
+			System.out.println("Botón 0");
 		}
 		else
 		{
 			// TODO ejecutar el codigo para cambiar el numero de base en base
 			
-			System.out.println("1");
+			System.out.println("Botón 1");
 			
 			b.act();
 		}
