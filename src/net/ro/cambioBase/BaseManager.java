@@ -24,9 +24,30 @@ public class BaseManager
 	// Actualiza las bases
 	public void act()
 	{
+		// TODO Mirar que todos lo que se introduzca exista :)
+		
 		prim = b.hacerBase(ba.input.getText(), b.cogerBase(ba.input.getText()));
 		sec = b.hacerBase(ba.input_.getText(), b.cogerBase(ba.input_.getText()));
 		
-		ba.cambio_out.setText(b.cambioBaseDiez(pred, sec, b.cambioBase(prim, pred, ba.cambio.getText())));
+		if (comprobar(ba.cambio.getText(), prim)) ba.cambio_out.setText(b.cambioBaseDiez(pred, sec, b.cambioBase(prim, pred, ba.cambio.getText()))); else error("ERROR");
 	}
+	
+	Boolean comprobar(String txt, String[] str)
+	{
+		Boolean temp = true;
+		
+		for (int i = 0; i < txt.length(); i++)
+		{
+			for (int a = 0; a < str.length; a++)
+			{
+				if (txt.substring(i, i + 1).equals(str[a])) break;
+				
+				if (a == str.length - 1 && !txt.substring(i, i + 1).equals(str[a])) temp = false;
+			}
+		}
+		
+		return temp;
+	}
+	
+	void error(String _error) { ba.cambio_out.setText(_error); }
 }
