@@ -88,7 +88,7 @@ public class Main_base
         input_.setLocation(10, 140);
         input_.setSize(500, 25);
         
-        input_.setEnabled(false);
+        input_.setEnabled(true);
         
         // Primer numero y su texto
         

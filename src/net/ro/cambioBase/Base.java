@@ -46,4 +46,19 @@ public class Base
 		
 		return temp;
 	}
+	
+	public String cambioBaseDiez(String[] in, String[] out, int num)
+	{
+		String temp = "";
+		
+		int max = (int) (Math.log10(num)/Math.log10(out.length));
+		
+		for(int i = max; i >= 0; i--)
+		{
+			temp += out[(int) (num / Math.pow(out.length, i))];
+			num = (int) (num % Math.pow(out.length, i));
+		}
+		
+		return temp;
+	}
 }
