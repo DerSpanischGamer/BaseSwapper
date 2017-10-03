@@ -26,29 +26,41 @@ public class BaseManager
 	{
 		int temp = 0;
 		
-		if (b.cogerBase(ba.input.getText()) >= 2)
+		if (!nullos(ba.input.getText()))
 		{
-			if (!repeticion(ba.input.getText()))
+			if (b.cogerBase(ba.input.getText()) >= 2)
 			{
-				prim = b.hacerBase(ba.input.getText(), b.cogerBase(ba.input.getText())); 
-				
-				temp++;
+				if (!repeticion(ba.input.getText()))
+				{
+					prim = b.hacerBase(ba.input.getText(), b.cogerBase(ba.input.getText())); 
+					
+					temp++;
+				}
+				else { error("ERROR, base_in repite cifras"); }
 			}
-			else { error("ERROR, base_in repite cifras"); }
+			else { error("ERROR, base_in < 2"); }
 		}
-		else { error("ERROR, base_in < 2"); }
+		else { error("ERROR, base_in cifra ~E~"); }
 		
-		if (b.cogerBase(ba.input_.getText()) >= 2)
+		
+		
+		
+		
+		if (!nullos(ba.input_.getText()))
 		{
-			if (!repeticion(ba.input_.getText()))
+			if (b.cogerBase(ba.input_.getText()) >= 2)
 			{
-				sec = b.hacerBase(ba.input_.getText(), b.cogerBase(ba.input_.getText()));
-				
-				temp++;
+				if (!repeticion(ba.input_.getText()))
+				{
+					sec = b.hacerBase(ba.input_.getText(), b.cogerBase(ba.input_.getText()));
+					
+					temp++;
+				}
+				else { error("ERROR, base_out repite cifras"); }
 			}
-			else { error("ERROR, base_out repite cifras"); }
+			else { error("ERROR, base_out < 2"); }
 		}
-		else { error("ERROR, base_out < 2"); }
+		else { error("ERROR, base_out cifra ~E~"); }
 		
 		if (temp == 2) { if (comprobar(ba.cambio.getText(), prim)) ba.cambio_out.setText(b.cambioBaseDiez(pred, sec, b.cambioBase(prim, pred, ba.cambio.getText()))); else error("ERROR, num ~E~"); }
 	}
@@ -84,6 +96,18 @@ public class BaseManager
 				if (temp_[i].equals(temp_[a]) && i != a) temp = true;
 			}
 		}
+		
+		return temp;
+	}
+	
+	Boolean nullos(String txt)
+	{
+		// Devuevle falso si al crear el array no habrá huecos, es decir que se pongan dos comas seguidas o una coma al final, dejando un nullo
+		Boolean temp = false;
+		
+		// TODO mirar si hay algun lugar donde pueda aparecer algun nullo, casos conocidos: dos comas seguidas y una coma al final
+		// creo que sera mejor mirar primero si hay algun nullo por la mitad del camino y por ultimo al final del texto
+		// ya que al final del texto el esta funcion puede corregir ese pequeño fallo :)
 		
 		return temp;
 	}
